@@ -21,7 +21,7 @@ BG_LIME         = "\033[48;5;46m"
 BG_ULTRA_BLUE   = "\033[48;5;21m"
 BG_MAGENTA      = "\033[48;5;201m"
 
-NAME        = fixedConversion
+NAME        = fixedOperators
 FILES       = main.cpp\
 			  Fixed.cpp
 

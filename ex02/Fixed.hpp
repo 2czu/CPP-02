@@ -6,7 +6,7 @@
 /*   By: pacda-si <pacda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 17:26:38 by pacda-si          #+#    #+#             */
-/*   Updated: 2025/05/25 20:29:35 by pacda-si         ###   ########.fr       */
+/*   Updated: 2025/05/25 23:10:36 by pacda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,28 @@ class Fixed
 		Fixed(const float &f);
 		Fixed(const Fixed &other);
 		Fixed &operator=(const Fixed &other);
+		
+		Fixed operator*(const Fixed &other) const;
+		Fixed operator+(const Fixed &other) const;
+		Fixed operator-(const Fixed &other) const;
+		Fixed operator/(const Fixed &other) const;
+
+		bool operator==(const Fixed &other) const;
+		bool operator!=(const Fixed &other) const;
+		bool operator>(const Fixed &other) const;
+		bool operator<(const Fixed &other) const;
+		bool operator<=(const Fixed &other) const;
+		bool operator>=(const Fixed &other) const;
+
+		Fixed &operator++();
+		Fixed operator++(int);
+		Fixed &operator--();
+		Fixed operator--(int);
+
+		static Fixed &min(Fixed &a, Fixed &b);
+		static Fixed &max(Fixed &a, Fixed &b);
+		static const Fixed &min(const Fixed &a, const Fixed &b);
+		static const Fixed &max(const Fixed &a, const Fixed &b);
 
 		~Fixed();
 

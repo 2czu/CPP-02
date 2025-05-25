@@ -6,7 +6,7 @@
 /*   By: pacda-si <pacda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 17:26:40 by pacda-si          #+#    #+#             */
-/*   Updated: 2025/05/25 20:16:03 by pacda-si         ###   ########.fr       */
+/*   Updated: 2025/05/25 23:11:15 by pacda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,90 @@ std::ostream &operator<<(std::ostream &stream, const Fixed &fixed)
 {
 	stream << fixed.toFloat();
 	return (stream);
+}
+
+Fixed Fixed::operator*(const Fixed &other) const
+{
+	return Fixed(this->getRawBits() * other.getRawBits());
+}
+
+Fixed Fixed::operator+(const Fixed &other) const
+{
+	return Fixed(this->getRawBits() + other.getRawBits());
+}
+
+Fixed Fixed::operator-(const Fixed &other) const
+{
+	return Fixed(this->getRawBits() - other.getRawBits());
+}
+
+Fixed Fixed::operator/(const Fixed &other) const
+{
+	return Fixed(this->getRawBits() / other.getRawBits());
+}
+
+bool Fixed::operator==(const Fixed &other) const
+{
+	return this->getRawBits() == other.getRawBits();
+}
+
+bool Fixed::operator!=(const Fixed &other) const
+{
+	return this->getRawBits() != other.getRawBits();
+}
+
+bool Fixed::operator>(const Fixed &other) const
+{
+	return this->getRawBits() > other.getRawBits();
+}
+
+bool Fixed::operator<(const Fixed &other) const
+{
+	return this->getRawBits() < other.getRawBits();
+}
+
+bool Fixed::operator<=(const Fixed &other) const
+{
+	return this->getRawBits() <= other.getRawBits();
+}
+
+bool Fixed::operator>=(const Fixed &other) const
+{
+	return this->getRawBits() >= other.getRawBits();
+}
+
+Fixed &Fixed::operator++()
+{
+	this->_rawBits++;
+	return (*this);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed toto(*this);
+	++(*this);
+	return (toto);
+}
+
+Fixed &Fixed::operator--()
+{
+	this->_rawBits--;
+	return (*this);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed toto(*this);
+	--(*this);
+	return (toto);
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+	return (b < a ? b : a);
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	return (a > b ? a : b);
 }
