@@ -6,34 +6,45 @@
 /*   By: pacda-si <pacda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 17:26:38 by pacda-si          #+#    #+#             */
-/*   Updated: 2025/05/25 20:16:23 by pacda-si         ###   ########.fr       */
+/*   Updated: 2025/05/25 20:29:35 by pacda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
-# include <string>
+# include <cmath>
 # include <iostream>
+
+# define GREEN "\033[32m"
+# define YELLOW "\033[33m"
+# define CYAN "\033[36m"
+# define RESET "\033[0m"
 
 class Fixed
 {
-	private :
+	private:
 
 		int 				_rawBits;
 		static const int 	_fracBits = 8;
 
-	public :
-		
+	public:
+
 		Fixed();
-		~Fixed();
+		Fixed(const int &n);
+		Fixed(const float &f);
 		Fixed(const Fixed &other);
 		Fixed &operator=(const Fixed &other);
-	
 
-		void	setRawBits(int const raw);
-		int		getRawBits(void) const;
-	
+		~Fixed();
+
+		int getRawBits() const;
+		void setRawBits(const int raw);
+		float toFloat() const;
+		int toInt() const;
 };
+
+std::ostream &operator<<(std::ostream &stream, const Fixed &fixed);
+
 
 #endif
